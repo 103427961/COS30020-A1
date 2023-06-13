@@ -20,16 +20,16 @@
             <input type="text" id="cdate" name="cdate"/> <br/>
             <div>
                 <span>Position:</span>
-                <input type="radio" id="pos1" name="pos"/>
+                <input type="radio" id="pos1" name="pos" value="ft"/>
                 <label for="pos1">Full Time</label>
-                <input type="radio" id="pos2" name="pos"/>
+                <input type="radio" id="pos2" name="pos" value="pt"/>
                 <label for="pos2">Part Time</label>
             </div>
             <div>
                 <span>Contract:</span>
-                <input type="radio" id="contract1" name="contract"/>
+                <input type="radio" id="contract1" name="contract" value="og"/>
                 <label for="contract1">On-going</label>
-                <input type="radio" id="contract2" name="contract"/>
+                <input type="radio" id="contract2" name="contract" value="ft"/>
                 <label for="contract2">Fixed Term</label>
             </div>
             <div>
