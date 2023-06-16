@@ -11,7 +11,8 @@
         <h1>Job Vacancy Posting System</h1>
         <form action="searchjobprocess.php" method="get">
             <label for="title">Job Title: </label>
-            <input type="text" id="title" name="title" maxlength="5"/> <br/>
+            <input type="text" id="title" name="title" maxlength="20"/> <br/>
+            <button type="submit">Submit</button>
         </form>
         <p><a href="index.php">Return to Home Page</a></p>
     </body>

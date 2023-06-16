@@ -18,7 +18,7 @@
             copied from any other student's work or from any other source</a></p>
         <div>
             <p><a href="postjobform.php">Post a job vacancy</a></p>
-            <p><a href="">Search for a job vacancy</a></p>
+            <p><a href="searchjobform.php">Search for a job vacancy</a></p>
         </div>
         <div>
             <p><a href="">About this assignment</a></p>   
