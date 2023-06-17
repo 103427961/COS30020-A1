@@ -32,6 +32,7 @@
     }
 
     $title = $_GET["title"];
+    $filters = $_GET["filter"];
     $valid = validate_title($title);
     if ($valid != "") {
         echo "<p>$valid<p>";
@@ -48,19 +49,40 @@
     $handle = fopen($filename, "r");
     while (!feof($handle)) {
         $data = fgets($handle);
+        $data = trim($data);
+        if (empty($data))
+            continue;
         $data = explode("\t", $data);
         $joblist[] = $data;
     }
-    foreach ($joblist as $job) {
-        if (str_contains(strtolower($job[1]), $title)) {
-            $matches[] = $job;
+    foreach ($joblist as $jobdata) {
+        $match = true;
+        $jobtitle = strtolower($jobdata[1]);
+        if (str_contains($jobtitle, $title)) {
+            foreach ($filters as $index=>$filter) {
+                if (!str_contains($jobdata[$index], $filter)) {
+                    $match = false;
+                    break;
+                }
+            }
+            if (!$match) {
+                continue;
+            }
+            $matches[] = $jobdata;
         }
     }
     fclose($handle);
     if (empty($matches)) {
-        echo "<p>No matching job title</p>";
+        echo "<p>No matching job vacancy</p>";
         return;
     }
+
+    usort($matches, function($a, $b) {
+        $da = date_create_from_format("d/m/y", $a[3]);
+        $db = date_create_from_format("d/m/y", $b[3]);
+        return $da < $db;
+    });
+
     foreach ($matches as $job) {
         echo "<p>Title: $job[1]</p>";
         echo "<p>Description: $job[2]</p>";

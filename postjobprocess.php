@@ -58,6 +58,10 @@
             return "Closing Date cannot be empty";
         if (preg_match("/^(0?[1-9]|[12]\d|3[01])[\/](0?[1-9]|1[0-2])[\/]\d{2}$/", $i) == 0)
             return "Date must follow dd/mm/yy format";
+        $temp = explode("/", $i);
+        if (!checkdate($temp[1], $temp[0], "20".$temp[2])) {
+            return "Date is not valid";
+        }
         return "";
     }
 
@@ -169,13 +173,11 @@
         fclose($handle);
     }
     if ($new_data) {
-        $handle = fopen($filename, "a");
         $data = $pid . "\t" . $title . "\t" . $desc . "\t" . 
                 $cdate . "\t" . $pos . "\t" . $contract . "\t" . 
                 $post . "\t" . $mail . "\t" . $loc . "\n";
         $joblist[] = $data;
-        fputs($handle, $data);
-        fclose($handle);
+        file_put_contents($filename, $data, FILE_APPEND);
         echo "<p>Job successfully posted</p>";
     } else 
         echo "<p>Job with the same ID already exist</p>";
