@@ -21,7 +21,7 @@
             <p><a href="searchjobform.php">Search for a job vacancy</a></p>
         </div>
         <div>
-            <p><a href="">About this assignment</a></p>   
+            <p><a href="about.php">About this assignment</a></p>   
         </div>
         <?php
         ?>

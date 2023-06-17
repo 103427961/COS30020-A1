@@ -57,7 +57,27 @@
         }
     }
     fclose($handle);
+    if (empty($matches)) {
+        echo "<p>No matching job title</p>";
+        return;
+    }
+    foreach ($matches as $job) {
+        echo "<p>Title: $job[1]</p>";
+        echo "<p>Description: $job[2]</p>";
+        echo "<p>Closing Date: $job[3]</p>";
+        echo "<p>Position: $job[5] - $job[4]</p>";
+        $post = $job[6];
+        $mail = $job[7];
+        echo "<p>Application by: ";
+        if ($post && $mail != "") {
+            echo "Post and Email</p>";
+        } else {
+            echo $post != ""? "Post": "Email" . "</p>";
+        }
+        echo "<p>Location: $job[8]</p>";
+    }
     ?>
+    <p><a href="searchjobform.php">Search for another job vacancy</a></p>
     <p><a href="index.php">Return to Home Page</a></p>
 </body>
 
