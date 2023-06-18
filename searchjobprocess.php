@@ -58,6 +58,11 @@
         $valid = validate_title($title);
         if ($valid != "") {
             echo "<p>$valid<p>";
+            echo "
+            <div class=\"redirect-link center\">
+                <p><a href=\"searchjobform.php\">Search for another job vacancy</a></p>
+                <p><a href=\"index.php\">Return to Home Page</a></p>
+            </div>";
             return;
         }
         $filename = "../../data/jobposts/jobs.txt";
@@ -85,9 +90,9 @@
         foreach ($joblist as $jobdata) {
             $match = true;
             $jobtitle = strtolower($jobdata[1]);
-            if (str_contains($jobtitle, $title)) {
+            if (preg_match("/$title/", $jobtitle)) {
                 foreach ($filters as $index => $filter) {
-                    if (!str_contains($jobdata[$index], $filter)) {
+                    if (!preg_match("/$filter/", $jobdata[$index])) {
                         $match = false;
                         break;
                     }
@@ -95,6 +100,7 @@
                 if (!$match) {
                     continue;
                 }
+                if (date_create_from_format("d/m/y", $jobdata[3])->getTimestamp() <= time()) continue;
                 $matches[] = $jobdata;
             }
         }
@@ -115,7 +121,9 @@
             return $da < $db;
         });
 
-        foreach ($matches as $job) {
+        foreach ($matches as $i=>$job) {
+            $i = $i+1;
+            echo "<h3>$i</h3>";
             echo "<p>Title: $job[1]</p>";
             echo "<p>Description: $job[2]</p>";
             echo "<p>Closing Date: $job[3]</p>";

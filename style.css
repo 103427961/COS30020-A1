@@ -112,10 +112,10 @@ nav li:hover a {
     margin-bottom: 10px;
 }
 
-.typed-span,
-.text-input label {
+.typed-span, .text-input label {
     text-align: left;
-    width: 30%;
+    width: 20%;
+    padding: 5px;
 }
 
 .text-input input,
@@ -140,4 +140,9 @@ textarea {
 .redirect-link a:hover {
     color: rgb(0, 0, 0);
     background-color: #853131;
+}
+
+img {
+    width: 40%;
+    height: auto;
 }

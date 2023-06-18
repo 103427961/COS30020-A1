@@ -13,7 +13,8 @@
 <body>
     <nav>
         <ul>
-            <li class="<?php echo basename(htmlspecialchars($_SERVER["PHP_SELF"])) == "index.php" ? "liactive" : ""; ?>">
+            <li
+                class="<?php echo basename(htmlspecialchars($_SERVER["PHP_SELF"])) == "index.php" ? "liactive" : ""; ?>">
                 <a href="index.php">Home</a>
             </li>
             <li
@@ -24,19 +25,23 @@
                 class="<?php echo basename(htmlspecialchars($_SERVER["PHP_SELF"])) == "searchjobform.php" ? "liactive" : ""; ?>">
                 <a href="searchjobform.php">Look for a job</a>
             </li>
-            <li class="<?php echo basename(htmlspecialchars($_SERVER["PHP_SELF"])) == "about.php" ? "liactive" : ""; ?>">
+            <li
+                class="<?php echo basename(htmlspecialchars($_SERVER["PHP_SELF"])) == "about.php" ? "liactive" : ""; ?>">
                 <a href="about.php">About this</a>
             </li>
         </ul>
     </nav>
-    <h1>About</h1>
-    <p>The PHP version installed in mercury is:
-        <?php echo PHP_VERSION ?>
-    </p>
-    <p>All the tasks listed in the Assignment page is attempted</p>
-    <p>Special features: WIP</p>
-    <p>Screenshots</p>
-    <p><a href="index.php">Return to Home Page</a></p>
+    <div class="container center">
+        <h1>About</h1>
+        <p>The PHP version installed in mercury is:
+            <?php echo PHP_VERSION ?>
+        </p>
+        <p>All the tasks listed in the Assignment page is attempted</p>
+        <p>Special features: Advanced tasks, basic css, and a navigation bar is attempted</p>
+        <p>Discussion screenshot</p>
+        <img src="style/discussion.jpg"/>
+        <div class="redirect-link"><p><a href="index.php">Return to Home Page</a></p></div>
+    </div>
 </body>
 
 </html>
